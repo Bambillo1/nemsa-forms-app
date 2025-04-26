@@ -1,0 +1,12 @@
+setup.py
+nemsa_forms.egg-info/PKG-INFO
+nemsa_forms.egg-info/SOURCES.txt
+nemsa_forms.egg-info/dependency_links.txt
+nemsa_forms.egg-info/requires.txt
+nemsa_forms.egg-info/top_level.txt
+routes/__init__.py
+routes/admin.py
+routes/auth.py
+routes/main.py
+services/__init__.py
+services/email_services.py

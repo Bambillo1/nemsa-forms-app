@@ -1,0 +1,22 @@
+{% extends "base.html" %} {# Extend the new correct base.html #}
+
+{% block title %}{% block auth_title %}Authentication{% endblock %}{% endblock %} {# Allow setting a specific title for auth pages #}
+
+{% block extra_css %}
+    {{ super() }} {# Include any CSS from base.html's extra_css block #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
+{% block content %} {# auth_base provides the content block for auth pages #}
+    <div class="auth-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    {% block auth_content %}{% endblock %} {# auth_content is where login/register forms go #}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{# auth_base doesn't need its own extra_js block usually, but you can add one if needed #}

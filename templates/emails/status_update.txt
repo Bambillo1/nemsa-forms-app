@@ -1,0 +1,13 @@
+Dear {{ username }},
+
+The status of your document "{{ document_name }}" has been updated to {{ new_status }}.
+
+{% if admin_message %}
+Message from Admin:
+{{ admin_message }}
+{% endif %}
+
+You can view your documents on your dashboard: {{ url_for('main.dashboard', _external=True) }}
+
+Sincerely,
+The NEMSA Team

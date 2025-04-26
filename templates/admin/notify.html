@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Notify User{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Notify User about Document Status</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {# The form posts back to the notify_user route #}
+            <form method="POST" action="{{ url_for('admin.notify_user') }}">
+                 {# Assuming Flask-WTF CSRFProtect is initialized and handles token validation on POST #}
+                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"> 
+
+                <div class="mb-3">
+                    <label for="documentSelect" class="form-label">Select Document</label>
+                    <select class="form-select" id="documentSelect" name="document" required>
+                        <option value="" disabled selected>-- Choose Document --</option>
+                        {% for document in documents %}
+                            {# Option value is the document's _id (as a string), display original name #}
+                            <option value="{{ document._id }}">{{ document.original_name }} (Uploaded by User ID: {{ document.user_id }})</option>
+                        {% else %}
+                            <option value="" disabled>No documents available</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="statusSelect" class="form-label">Set New Status</label>
+                    <select class="form-select" id="statusSelect" name="status" required>
+                        <option value="" disabled selected>-- Choose Status --</option>
+                        <option value="Pending Review">Pending Review</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Rejected</option>
+                        <option value="Needs More Info">Needs More Info</option>
+                        {# Add other statuses as needed #}
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="adminMessage" class="form-label">Message to User (Optional)</label>
+                    <textarea class="form-control" id="adminMessage" name="message" rows="4"></textarea>
+                    <div class="form-text">This message will be included in the email notification.</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Send Notification</button>
+                <a href="{{ url_for('admin.manage_documents') }}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+Metadata-Version: 2.2
+Name: nemsa_forms
+Version: 0.1
+Requires-Dist: Flask
+Requires-Dist: pymongo
+Requires-Dist: flask-mail
+Dynamic: requires-dist

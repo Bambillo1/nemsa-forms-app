@@ -1,0 +1,15 @@
+<p>Dear {{ username }},</p>
+
+<p>The status of your document "{{ document_name }}" has been updated to <strong>{{ new_status }}</strong>.</p>
+
+{% if admin_message %}
+<p><strong>Message from Admin:</strong></p>
+<p>{{ admin_message }}</p>
+{% endif %}
+
+<p>You can view your documents on your dashboard.</p> {# You could add a direct link here too if desired #}
+{# <p>Click here to go to your dashboard: <a href="{{ url_for('main.dashboard', _external=True) }}">Dashboard</a></p> #}
+
+
+<p>Sincerely,<br>
+The NEMSA Team</p>

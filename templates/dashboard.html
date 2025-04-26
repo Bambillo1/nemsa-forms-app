@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %} {# Set a specific title for the dashboard page #}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Dashboard</h2>
+
+    {# Section for Downloadable Forms & Templates #}
+    {# This card displays files from the templates_for_download folder #}
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h3 class="h5 mb-0">Downloadable Forms & Templates</h3>
+        </div>
+        <div class="card-body">
+            {% if template_files %}
+                {# Display the list of template files if the list is not empty #}
+                <ul class="list-group">
+                    {% for template_file in template_files %}
+                        {# Create a list item for each template file #}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {# Display the filename #}
+                            {{ template_file }}
+                            {# Provide a download link using the new download_template route #}
+                            <a href="{{ url_for('main.download_template', filename=template_file) }}" class="btn btn-sm btn-outline-primary">Download</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                {# Display a message if no template files are found #}
+                <div class="alert alert-info mb-0" role="alert">
+                    No downloadable templates available at this time.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+    {# Section for Uploading Your Filled Forms or Documents #}
+    {# This card contains the form for uploading files #}
+    <div class="card mb-4">
+        <div class="card-header bg-secondary text-white">
+            <h3 class="h5 mb-0">Upload Your Filled Forms or Documents</h3>
+        </div>
+        <div class="card-body">
+            {# Your existing upload form posting to the /upload route #}
+            <form method="POST" action="{{ url_for('main.upload') }}" enctype="multipart/form-data">
+                {# Include the hidden CSRF token field if not using form.hidden_tag() and CSRF is enabled globally #}
+                {# If you are passing form=form to the template, form.hidden_tag() is preferred #}
+                {# If using form=form in the route: {{ form.hidden_tag() }} #}
+                {# If not passing a form object but need CSRF: <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"> #}
+                 {# Note: The upload route was exempted from CSRF for testing, but keep this in mind #}
+
+                <div class="input-group">
+                    {# The file input field with the name 'document' #}
+                    <input type="file" class="form-control" name="document" required>
+                    {# The submit button for the form #}
+                    <button class="btn btn-primary" type="submit">Upload</button>
+                </div>
+            </form>
+            {# Optional: Link to a dedicated upload page if upload.html was for a different flow #}
+            {# <a href="{{ url_for('main.upload') }}" class="btn btn-primary mt-3">Upload Document on a Separate Page</a> #}
+        </div>
+    </div>
+
+
+    {# Section for Listing Your Uploaded Documents #}
+    {# This card displays the documents the currently logged-in user has uploaded #}
+    <div class="card">
+         <div class="card-header bg-info text-white">
+             <h3 class="h5 mb-0">Your Uploaded Documents</h3>
+         </div>
+        <div class="card-body">
+            <div class="list-group">
+                {% for document in documents %}
+                {# Create a list item for each uploaded document #}
+                <div class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            {# Display the original name of the uploaded file #}
+                            <h5>{{ document.original_name }}</h5>
+                            {# Display upload date formatted using the custom filter #}
+                            <small class="text-muted">
+                                Uploaded: {{ document.upload_date | datetimeformat('%Y-%m-%d %H:%M') }}
+                            </small>
+                            {# Display the current status of the document with a badge #}
+                            <span class="badge {% if document.status == 'Approved' %}bg-success{% elif document.status == 'Rejected' %}bg-danger{% else %}bg-secondary{% endif %} ms-2">
+                                {{ document.status }}
+                            </span>
+                        </div>
+                        {# Provide a download link for the uploaded document #}
+                        <a href="{{ url_for('main.download', filename=document.filename) }}"
+                           class="btn btn-sm btn-outline-primary"
+                           download="{{ document.original_name }}">
+                            Download
+                        </a>
+                    </div>
+                </div>
+                {% else %}
+                {# Message displayed if the user has not uploaded any documents #}
+                <div class="list-group-item text-muted">
+                    No documents found
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

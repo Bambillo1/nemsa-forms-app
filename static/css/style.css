@@ -1,0 +1,55 @@
+/* Custom styles */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(27, 1, 71, 0.15) !important;
+}
+
+.navbar {
+    background-color: rgba(27, 1, 71, 0.15) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.navbar-brand, .nav-link {
+    color: #4a148c !important; /* Dark purple text */
+}
+
+.navbar-toggler {
+    border-color: rgba(74, 20, 140, 0.5);
+}
+
+/* File upload styling */
+.form-control-file {
+    border: 2px dashed #dee2e6;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.form-control-file:hover {
+    border-color: #0d6efd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .display-6 {
+        font-size: 1.5rem;
+    }
+}

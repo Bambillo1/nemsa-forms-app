@@ -1,0 +1,8 @@
+Dear {{ username }},
+
+You have successfully logged out of your account.
+
+If this was unexpected, please contact support.
+
+Sincerely,
+The NEMSA Team

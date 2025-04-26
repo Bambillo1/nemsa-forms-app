@@ -1,0 +1,24 @@
+# Ignore Python virtual environment
+#venv/
+#.venv/
+#env/
+#.env/
+
+# Ignore environment variables file
+.env
+
+# Ignore uploaded files folder
+#uploads/
+#templates_for_download/ # Consider ignoring if templates are large or you don't want them in repo
+# If you want templates_for_download in your repo, remove this line.
+
+# Ignore Python cache files
+__pycache__/
+
+
+# Ignore editor/IDE specific files
+.vscode/
+
+
+
+

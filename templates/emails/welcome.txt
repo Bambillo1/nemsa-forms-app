@@ -1,0 +1,8 @@
+Welcome, {{ username }}!
+
+Thank you for registering with our application.
+
+You can now log in here: {{ url_for('auth.login', _external=True) }}
+
+Sincerely,
+The App Team
