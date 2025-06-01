@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEMSA Forms Portal - Authentication</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --primary-navy: #001a35; /* Very Dark Blue/Navy for main elements */
+            --secondary-blue: #003366; /* Medium Navy Blue for secondary elements */
+            --accent-green: #28a745; /* A user-friendly, vibrant green */
+            --accent-red: #B22222; /* FireBrick - a deep, professional red */
+            --hover-red: #8B0000; /* Darker red for hover */
+            --text-color: #333;
+            --light-text-color: #f8f9fa;
+            --card-bg-opacity: 0.9; /* More opaque for forms */
+            --glass-bg-opacity: 0.05; /* Very light transparency for glass effect */
+            --transition-speed: 0.3s;
+            --bg-transition-speed: 1.5s;
+            --form-transition-speed: 0.5s;
+        }
+
+        /* General Body Styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hide scrollbars for full-page background */
+            color: var(--text-color);
+            background-color: #222; /* Fallback background color */
+        }
+
+        /* Auth Container: Full viewport, flexbox for centering */
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden; /* Hide overflow from images */
+        }
+
+        /* Background Slideshow Styling */
+        .background-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0; /* Behind other content */
+        }
+
+        .background-slideshow img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the entire area */
+            opacity: 0; /* Hidden by default */
+            transition: opacity var(--bg-transition-speed) ease-in-out, transform var(--bg-transition-speed) ease-in-out; /* Smooth fade and subtle zoom */
+            filter: brightness(0.6) grayscale(0.2); /* Slightly darken and desaturate images */
+            transform: scale(1.05); /* Initial slight zoom for effect */
+        }
+
+        .background-slideshow img.active {
+            opacity: 1; /* Active image is visible */
+            transform: scale(1); /* Zoom back to normal */
+        }
+
+        /* Overlay for readability over background */
+        .auth-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+            z-index: 1; /* Above background, below content */
+        }
+
+        /* Main Content Wrapper for the two columns */
+        .content-wrapper {
+            position: relative;
+            z-index: 2; /* Above the overlay */
+            width: 90%; /* Max width for content */
+            max-width: 1200px; /* Limit content width */
+            margin: 20px auto;
+            background: rgba(255, 255, 255, var(--glass-bg-opacity)); /* Very slight transparent background for wrapper */
+            border-radius: 15px;
+            overflow: hidden; /* Ensure content stays within rounded corners */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px); /* Glassmorphism effect */
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        /* Left Segment (Activities Info) */
+        .info-segment {
+            background: rgba(0, 0, 0, 0.3); /* Darker transparency for info segment to stand out from bright background */
+            padding: 40px;
+            color: var(--light-text-color); /* White text for contrast */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%; /* Take full height of parent row */
+            border-radius: 15px 0 0 15px; /* Rounded only on left side for desktop */
+            backdrop-filter: blur(5px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(5px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+        }
+
+        .info-segment h3 {
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--light-text-color);
+        }
+
+        .info-segment ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .info-segment ul li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .info-segment ul li i {
+            margin-right: 15px;
+            font-size: 1.5rem;
+            color: var(--accent-green); /* Green for icons */
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+
+        .info-segment .contact-link {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .info-segment .contact-link a {
+            color: var(--accent-green); /* Green for links */
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .info-segment .contact-link a:hover {
+            color: var(--light-text-color);
+        }
+
+        /* Right Segment (Forms Container) */
+        .forms-segment {
+            background: rgba(255, 255, 255, var(--card-bg-opacity)); /* More opaque white for forms */
+            padding: 40px;
+            border-radius: 0 15px 15px 0; /* Rounded only on right side for desktop */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            position: relative; /* For absolute positioning of forms */
+            overflow: hidden; /* Hide overflowing form during transition */
+        }
+
+        /* Corrected CSS for auth-form-container */
+        .auth-form-container {
+            width: 100%;
+            transition: opacity var(--form-transition-speed) ease;
+            position: absolute; /* Position absolutely to stack forms */
+            top: 0; /* Position at top of parent */
+            left: 0; /* Position at left of parent */
+            padding: inherit; /* Inherit padding from forms-segment, or specify */
+            opacity: 0;
+            visibility: hidden;
+            height: 100%; /* Take full height of parent segment */
+            display: flex; /* Use flex to center content inside */
+            flex-direction: column;
+            justify-content: center; /* Vertically center content */
+        }
+
+        .auth-form-container.active {
+            opacity: 1;
+            visibility: visible;
+            position: relative; /* Make it part of the normal flow when active */
+        }
+
+        .forms-segment .auth-header h2 {
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 25px; /* Added spacing */
+        }
+
+        .forms-segment .auth-header i {
+            color: var(--accent-green); /* Green for main login icon */
+            margin-right: 10px;
+        }
+
+        .forms-segment .form-control {
+            border-radius: 8px;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            color: var(--text-color); /* Ensure text is readable */
+        }
+
+        .forms-segment .form-control:focus {
+            border-color: var(--accent-green); /* Green focus border */
+            box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25); /* Green shadow */
+        }
+
+        .forms-segment .input-group-text {
+            background-color: var(--secondary-blue); /* Dark blue for icon background */
+            border: 1px solid var(--secondary-blue);
+            border-right: none;
+            border-radius: 8px 0 0 8px;
+            color: var(--light-text-color);
+        }
+
+        .forms-segment .btn-primary {
+            background-color: var(--accent-red); /* Red button */
+            border-color: var(--accent-red);
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-weight: 600;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+        }
+
+        .forms-segment .btn-primary:hover {
+            background-color: var(--hover-red); /* Darker red on hover */
+            border-color: var(--hover-red);
+            transform: translateY(-2px);
+        }
+
+        .forms-segment .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .forms-segment .text-muted a {
+            color: var(--accent-green); /* Green for links in forms */
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .forms-segment .text-muted a:hover {
+            color: var(--primary-navy); /* Dark navy on hover */
+        }
+
+        .forms-segment .form-text {
+            font-size: 0.85em;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) { /* For medium and small devices */
+            .content-wrapper {
+                width: 95%;
+                max-width: 600px; /* Limit width on smaller screens */
+                margin: 20px auto;
+                border-radius: 15px; /* Full rounded corners when stacked */
+            }
+
+            .info-segment, .forms-segment {
+                border-radius: 0; /* Remove specific rounding when stacked */
+                padding: 30px;
+                border-right: none; /* Remove right border when stacked */
+            }
+
+            .info-segment {
+                border-radius: 15px 15px 0 0; /* Rounded top when stacked */
+            }
+            .forms-segment {
+                border-radius: 0 0 15px 15px; /* Rounded bottom when stacked */
+                padding-top: 20px; /* Adjust padding when stacked */
+            }
+            /* Adjust positioning for forms when stacked */
+            .auth-form-container {
+                position: relative; /* Use relative when stacked to allow normal flow */
+                top: auto;
+                left: auto;
+                transform: none;
+                padding: 0; /* Reset specific padding if needed */
+            }
+        }
+
+        @media (max-width: 767.98px) { /* For extra small devices */
+            .info-segment {
+                padding: 25px;
+            }
+            .forms-segment {
+                padding: 25px;
+            }
+            /* Darker overlay on mobile for better text contrast, especially if info segment is light */
+            .auth-container::before {
+                background: rgba(0, 0, 0, 0.65);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="background-slideshow">
+            <img src="https://placehold.co/1920x1080/001a35/ffffff?text=NEMSA+Building" alt="NEMSA Building" class="active">
+            <img src="https://placehold.co/1920x1080/28a745/ffffff?text=Data+Center+Overview" alt="Data Center Overview">
+            <img src="https://placehold.co/1920x1080/B22222/ffffff?text=Compliance+Desk" alt="Compliance Desk">
+            <img src="https://placehold.co/1920x1080/003366/ffffff?text=Team+Collaboration" alt="Team Collaboration">
+        </div>
+
+        <div class="content-wrapper row g-0"> {# g-0 removes gutter between columns #}
+            <div class="col-md-6 d-none d-md-flex info-segment"> {# d-md-flex to ensure flex on medium+ #}
+                <div>
+                    <h3><i class="fas fa-building me-3"></i>About NEMSA Forms Portal</h3>
+                    <p>
+                        Welcome to the National Electrical Management Services Authority (NEMSA) Forms Portal. We streamline your interactions with essential services related to electrical inspections, certifications, and compliance.
+                    </p>
+                    <ul>
+                        <li><i class="fas fa-cloud-upload-alt"></i> Easy Document Upload & Tracking</li>
+                        <li><i class="fas fa-shield-alt"></i> Secure Management Review Process</li>
+                        <li><i class="fas fa-bell"></i> Real-time Status Notifications via Email</li>
+                        <li><i class="fas fa-file-download"></i> Access Downloadable Templates & Forms</li>
+                        <li><i class="fas fa-headset"></i> 24/7 Support from Our Administration Team</li>
+                        <li><i class="fas fa-check-circle"></i> Ensure Compliance & Safety Standards</li>
+                    </ul>
+                    <p class="small contact-link">
+                        Need assistance? Contact our support team: <a href="mailto:support@nemsa.org"><i class="fas fa-envelope"></i> support@nemsa.org</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 forms-segment">
+                <div id="login-form-container" class="auth-form-container active">
+                    <div class="auth-header text-center mb-4">
+                        <h2 class="fw-bold"><i class="bi bi-lock"></i> User Login</h2>
+                    </div>
+
+                    <form method="POST" action="#"> {# Replaced Flask url_for with # for standalone HTML #}
+                        <div class="mb-3">
+                            <label for="login-username" class="form-label">Username</label> {# Added id for label for #}
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                <input type="text" class="form-control" id="login-username" name="username" placeholder="Enter your username" required> {# Added id and placeholder #}
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="login-password" class="form-label">Password</label> {# Added id for label for #}
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-key"></i></span>
+                                <input type="password" class="form-control" id="login-password" name="password" placeholder="Enter your password" required> {# Added id and placeholder #}
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 mb-3">
+                            <i class="bi bi-box-arrow-in-right"></i> Login
+                        </button>
+
+                        <div class="text-center">
+                            <a href="#" class="text-muted" id="show-register"> {# Replaced Flask url_for with # and added id for JS #}
+                                Don't have an account? Register here
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="register-form-container" class="auth-form-container">
+                    <div class="auth-header text-center mb-4">
+                        <h2 class="fw-bold"><i class="bi bi-person-plus"></i> Create Account</h2>
+                    </div>
+
+                    <form> {# In a real app, this would be a Flask-WTF form with CSRF #}
+                        <div class="mb-3">
+                            <label for="register-username" class="form-label">Username</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control" id="register-username" placeholder="Choose a username" required
+                                       data-bs-toggle="tooltip" data-bs-placement="right" title="Choose a unique username (4-20 characters)">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="register-email" class="form-label">Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input type="email" class="form-control" id="register-email" placeholder="Enter your email" required
+                                       data-bs-toggle="tooltip" data-bs-placement="right" title="Your active email address">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="register-password" class="form-label">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                <input type="password" class="form-control" id="register-password" placeholder="Create a password" required
+                                       data-bs-toggle="tooltip" data-bs-placement="right" title="At least 8 characters with numbers and symbols">
+                            </div>
+                            <div class="form-text">At least 8 characters with numbers and symbols</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="register-confirm-password" class="form-label">Confirm Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="register-confirm-password" placeholder="Confirm your password" required
+                                       data-bs-toggle="tooltip" data-bs-placement="right" title="Re-enter your password for confirmation">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 mb-3">
+                            <i class="fas fa-user-plus"></i> Register
+                        </button>
+
+                        <div class="text-center">
+                            <a href="#" class="text-muted" id="show-login">
+                                Already have an account? Login here
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        // Initialize Bootstrap Tooltips
+        $(function () {
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        });
+
+        // Background Slideshow Logic with subtle zoom
+        $(document).ready(function() {
+            var images = $('.background-slideshow img');
+            var currentIndex = 0;
+            var intervalTime = 8000; // Change image every 8 seconds
+
+            function cycleImages() {
+                var currentImage = images.eq(currentIndex);
+                var nextIndex = (currentIndex + 1) % images.length;
+                var nextImage = images.eq(nextIndex);
+
+                // Deactivate current, activate next
+                currentImage.removeClass('active');
+                nextImage.addClass('active');
+
+                currentIndex = nextIndex;
+            }
+
+            // Start the slideshow
+            setInterval(cycleImages, intervalTime);
+
+            // Set the first image to active on load
+            images.first().addClass('active');
+        });
+
+        // Form Toggling Logic (Login <-> Register)
+        $(document).ready(function() {
+            const loginFormContainer = $('#login-form-container');
+            const registerFormContainer = $('#register-form-container');
+            const showRegisterLink = $('#show-register');
+            const showLoginLink = $('#show-login');
+
+            function showForm(formToShow, formToHide) {
+                // First, hide the current form
+                formToHide.removeClass('active');
+
+                // After the transition, set display to none and then show the new form
+                // This setTimeout matches the CSS transition duration
+                setTimeout(() => {
+                    formToHide.css('display', 'none'); // Completely hide the element after fade out
+
+                    // Prepare the next form and make it visible
+                    formToShow.css('display', 'flex'); // Use flex to re-enable internal centering
+                    formToShow.addClass('active'); // Start fade in
+                }, parseInt(getComputedStyle(formToHide[0]).transitionDuration) * 1000);
+            }
+
+            showRegisterLink.on('click', function(e) {
+                e.preventDefault();
+                showForm(registerFormContainer, loginFormContainer);
+            });
+
+            showLoginLink.on('click', function(e) {
+                e.preventDefault();
+                showForm(loginFormContainer, registerFormContainer);
+            });
+
+            // Initialize: Ensure only the login form is visible and active on page load
+            // And that the register form is properly hidden
+            registerFormContainer.css('display', 'none');
+            // The 'active' class is already set on login-form-container in HTML,
+            // so it will be visible by default.
+        });
+    </script>
+</body>
+</html>
