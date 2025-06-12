@@ -4,143 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEMSA Forms Portal - Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Slick Carousel -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
     <style>
         :root {
-            --primary-navy: #001a35; /* Very Dark Blue/Navy for main elements */
-            --secondary-blue: #003366; /* Medium Navy Blue for secondary elements */
-            --accent-green: #28a745; /* A user-friendly, vibrant green */
-            --accent-red: #B22222; /* FireBrick - a deep, professional red */
-            --hover-red: #8B0000; /* Darker red for hover */
+            --primary-navy: #001a35;
+            --secondary-blue: #003366;
+            --accent-green: #28a745;
+            --accent-red: #B22222;
+            --hover-red: #8B0000;
             --text-color: #333;
             --light-text-color: #f8f9fa;
             --section-bg-light: #f8f9fa;
             --section-bg-dark: #e9ecef;
-            --card-bg-opacity: 0.9;
-            --glass-bg-opacity: 0.05;
             --transition-speed: 0.3s;
-            --bg-transition-speed: 1.5s;
-            --form-transition-speed: 0.5s;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-color);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* --- Global Reusable Styles --- */
         .section {
-            padding: 80px 0; /* Standard section padding */
+            padding: 80px 0;
         }
+
         .has-bg-color {
-            background-color: var(--section-bg-dark); /* Light grey background for sections */
+            background-color: var(--section-bg-dark);
         }
+
         .section-title h2 {
             font-weight: 700;
             color: var(--primary-navy);
             position: relative;
-            display: inline-block; /* To make SVG underline below text */
+            display: inline-block;
         }
+
         .section-title h2 strong svg {
             position: absolute;
             left: 0;
-            bottom: -5px; /* Adjust as needed */
+            bottom: -5px;
             width: 100%;
             height: auto;
-            stroke: var(--accent-red); /* Consistent accent color for underlines */
+            stroke: var(--accent-red);
         }
+
         .btn-primary {
             background-color: var(--accent-red);
             border-color: var(--accent-red);
             transition: background-color var(--transition-speed), transform var(--transition-speed);
         }
+
         .btn-primary:hover {
             background-color: var(--hover-red);
             border-color: var(--hover-red);
             transform: translateY(-2px);
         }
+
         .btn-outline-primary {
             color: var(--accent-red);
             border-color: var(--accent-red);
             transition: all var(--transition-speed);
         }
+
         .btn-outline-primary:hover {
             background-color: var(--accent-red);
             color: var(--light-text-color);
         }
+
         .text-primary {
-            color: var(--accent-green) !important; /* Use accent green for primary text */
+            color: var(--accent-green) !important;
         }
 
-        /* --- Header Styles --- */
+        /* Header Styles */
         .navbar {
             background-color: var(--primary-navy);
             padding: 1rem 0;
         }
+
         .navbar-brand {
             color: var(--light-text-color);
             font-weight: 700;
             font-size: 1.8rem;
         }
+
         .navbar-brand:hover {
             color: var(--accent-green);
         }
+
         .navbar-nav .nav-link {
             color: var(--light-text-color);
             font-weight: 500;
             margin-right: 20px;
             transition: color var(--transition-speed);
         }
+
         .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
             color: var(--accent-green);
         }
 
-        /* --- Hero Area --- */
+        /* Hero Area */
         .hero-area {
-            background-color: var(--primary-navy); /* Dark background for hero */
+            background-color: var(--primary-navy);
             color: var(--light-text-color);
-            padding: 120px 0; /* More vertical space */
+            padding: 120px 0;
             position: relative;
             overflow: hidden;
         }
+
         .hero-img {
-            max-width: 300px; /* Adjust size as needed */
+            max-width: 300px;
             height: auto;
             margin-bottom: 20px;
         }
+
         .hero-img img {
             max-width: 100%;
             height: auto;
-            border-radius: 15px; /* Slightly rounded for the image */
+            border-radius: 15px;
         }
+
         .hero-area h1 {
             font-size: 3.5rem;
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 30px;
         }
+
         .hero-area p {
             font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto 40px auto;
         }
 
-        /* Shapes (Circles) */
+        /* Shapes */
         .hero-img .shape {
             position: absolute;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            pointer-events: none; /* Make them not interfere with clicks */
+            pointer-events: none;
             animation: pulse 4s infinite alternate;
         }
+
         .hero-img .shape-1 { top: 10%; left: -5%; width: 50px; height: 50px; animation-delay: 0s; }
         .hero-img .shape-2 { bottom: 20%; right: -10%; width: 70px; height: 70px; animation-delay: 1s; }
         .hero-img .shape-3 { top: 50%; right: 10%; width: 40px; height: 40px; animation-delay: 0.5s; }
@@ -153,6 +170,7 @@
             pointer-events: none;
             animation: float 8s infinite ease-in-out;
         }
+
         .has-circle .circle-1 { top: 10%; left: 5%; width: 80px; height: 80px; animation-delay: 0s; }
         .has-circle .circle-2 { top: 30%; right: 15%; width: 60px; height: 60px; animation-delay: 1s; }
         .has-circle .circle-3 { bottom: 20%; left: 10%; width: 100px; height: 100px; animation-delay: 2s; }
@@ -165,254 +183,163 @@
             0% { transform: scale(1); opacity: 0.1; }
             100% { transform: scale(1.2); opacity: 0.25; }
         }
+        
         @keyframes float {
             0% { transform: translateY(0) translateX(0); }
             50% { transform: translateY(-10px) translateX(10px); }
             100% { transform: translateY(0) translateX(0); }
         }
 
-        /* --- Brand Logo Section --- */
-        .brand-logo-slider {
-            padding: 30px 0;
-        }
-        .brand-logo-img {
-            max-height: 50px; /* Adjust height for logos */
-            width: auto;
-            margin: 0 20px;
-            filter: grayscale(100%); /* Desaturate logos */
-            opacity: 0.6;
-            transition: all var(--transition-speed);
-        }
-        .brand-logo-img:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-        }
-        /* Slick carousel customizations */
-        .slick-slide { margin: 0 10px; } /* Space between logos */
-        .slick-list { margin: 0 -10px; } /* Correct for margin on slides */
-
-        /* --- Service Section --- */
+        /* Service Section */
         .services .card-item {
-            display: flex; /* Ensure card is aligned with sibling */
+            display: flex;
             justify-content: center;
         }
+        
         .services .card {
-            max-width: 380px; /* Limit card width */
+            max-width: 380px;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: all var(--transition-speed);
+            border: none;
+            margin-bottom: 30px;
         }
+        
         .services .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.12);
         }
+        
         .services .card-icon {
             font-size: 3rem;
             color: var(--accent-green);
             margin-bottom: 20px;
         }
+        
         .services .card-title {
             font-weight: 600;
             color: var(--primary-navy);
             margin-bottom: 15px;
         }
+        
         .services .card-text {
             color: #6c757d;
             margin-bottom: 25px;
         }
+        
         .services .card-link {
             font-weight: 500;
             text-decoration: none;
         }
 
-        /* --- Experience Section --- */
-        .experience h2 strong svg {
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 100%;
-            height: auto;
-            stroke: var(--accent-red);
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-blue) 100%);
+            color: white;
+            padding: 60px 0;
         }
-        .experience .section-title {
-            margin-bottom: 50px;
-        }
-        .experience .bg-primary {
-            background-color: var(--secondary-blue) !important; /* Using a darker blue for these blocks */
-            color: var(--light-text-color);
-            border-radius: 8px;
+        
+        .stat-item {
             text-align: center;
+            padding: 20px;
         }
-        .experience .bg-primary span {
-            color: var(--accent-green) !important; /* Green for numbers */
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent-green);
         }
-        .experience .pb-3.border-bottom {
-            border-color: rgba(0, 0, 0, 0.1) !important;
-        }
-        .experience h3 {
-            color: var(--primary-navy);
-            font-weight: 600;
-        }
-        .experience .text-secondery {
-            color: var(--accent-green) !important; /* Green for job titles */
+        
+        .stat-label {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* --- Testimonial Section --- */
-        .testimonial .bg-primary {
-            background-color: var(--primary-navy) !important; /* Dark navy for testimonial block */
+        /* Testimonials */
+        .testimonial-card {
+            background-color: var(--primary-navy);
             color: var(--light-text-color);
             border-radius: 15px;
-            padding: 50px;
+            padding: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        .testimonial .quotation {
-            width: 60px;
-            height: 60px;
-            fill: #DBDBDB; /* Light grey for quotation marks */
-            margin-bottom: 20px;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-        }
-        .testimonial-left-slider .testimonial-left-slider-item {
-            position: relative; /* For quotation positioning */
-        }
-        .testimonial-left-slider p {
-            font-size: 1.1rem;
-            line-height: 1.8;
             margin-bottom: 30px;
         }
-        .testimonial-left-slider .img {
+        
+        .testimonial-card .quotation {
+            width: 60px;
+            height: 60px;
+            fill: #DBDBDB;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-avatar {
             width: 80px;
             height: 80px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--accent-green); /* Green border around avatar */
+            border: 3px solid var(--accent-green);
         }
-        .testimonial-left-slider h5 {
-            font-weight: 600;
-            margin-top: 0 !important; /* Override default bootstrap margin */
-            margin-bottom: 5px !important;
-            color: var(--light-text-color);
-        }
-        .testimonial-left-slider p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-        }
-
-        .testimonial-right-slider img {
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        /* Slick carousel dots/arrows color */
-        .slick-prev:before, .slick-next:before {
-            color: var(--accent-red) !important;
-        }
-        .slick-dots li button:before {
-            color: var(--accent-red) !important;
-            font-size: 10px;
-        }
-        .slick-dots li.slick-active button:before {
-            color: var(--hover-red) !important;
-        }
-
-        /* --- Project Section --- */
-        .projects .card {
-            overflow: hidden;
-            border-radius: 10px;
-            position: relative;
-            cursor: pointer;
-        }
-        .projects .card img {
-            transition: transform 0.5s ease;
-        }
-        .projects .card:hover img {
-            transform: scale(1.05);
-        }
-        .projects .card-img-overlay {
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            transition: background 0.3s ease;
-        }
-        .projects .card:hover .card-img-overlay {
-             background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 50%);
-        }
-        .projects .card-body {
-            padding: 0; /* Override default card-body padding */
-        }
-        .projects .card-img-overlay a {
-            color: var(--light-text-color);
-            text-decoration: none;
-            font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-            transition: color var(--transition-speed);
-        }
-        .projects .card-img-overlay a:hover {
-            color: var(--accent-green);
-        }
-        .projects .meta-list li {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-right: 15px;
-        }
-
-        /* --- Footer Styles --- */
+        
+        /* Footer */
         footer {
             background-color: var(--primary-navy);
             color: rgba(255, 255, 255, 0.7);
-            padding: 30px 0;
-            text-align: center;
-            font-size: 0.9rem;
+            padding: 60px 0 30px;
         }
+        
         footer a {
             color: var(--accent-green);
             text-decoration: none;
             transition: color var(--transition-speed);
         }
+        
         footer a:hover {
             color: var(--light-text-color);
         }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
 
-        /* Responsive Adjustments */
-        @media (max-width: 767.98px) {
-            .section {
-                padding: 60px 0;
-            }
+        /* Responsive */
+        @media (max-width: 991.98px) {
             .hero-area {
                 padding: 80px 0;
             }
+            
             .hero-area h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
-            .hero-area p {
-                font-size: 1rem;
+            
+            .section {
+                padding: 60px 0;
             }
-            .info-segment {
-                padding: 25px;
+        }
+        
+        @media (max-width: 767.98px) {
+            .hero-area h1 {
+                font-size: 2.3rem;
             }
-            .forms-segment {
-                padding: 25px;
-            }
-            .testimonial .bg-primary {
-                padding: 30px;
-            }
-            .testimonial .quotation {
-                top: 10px;
-                left: 10px;
-                width: 40px;
-                height: 40px;
+            
+            .stat-item {
+                margin-bottom: 30px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
                 <a class="navbar-brand" href="#">NEMSA Forms Portal</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -424,7 +351,10 @@
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="login.html">Login/Register</a> {# Placeholder for your forms page #}
+                            <a class="nav-link" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Services</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contact</a>
@@ -435,21 +365,25 @@
         </nav>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero-area section">
         <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-8 mx-auto">
-                    <div class="hero-img mx-auto mb-3 position-relative">
-                        <img src="https://placehold.co/600x400/8B0000/ffffff?text=NEMSA+Banner" alt="Hero Image"> {# Placeholder image #}
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-1 order-2">
+                    <p class="mb-3 fw-medium fs-4 text-primary">Hello, welcome to NEMSA...</p>
+                    <h1 class="mb-4">Streamlining Your Electrical Services Interactions</h1>
+                    <p class="mb-5">Discover a more efficient way to manage your electrical inspections, certifications, and compliance. Our portal simplifies the process, ensuring accuracy and timely updates for all your needs.</p>
+                    <a href="#" class="btn btn-primary btn-lg me-3">Get Started</a>
+                    <a href="#services-section" class="btn btn-outline-light btn-lg">Learn More</a>
+                </div>
+                <div class="col-lg-6 order-lg-2 order-1 text-center mb-5 mb-lg-0">
+                    <div class="hero-img mx-auto position-relative">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Electrical Safety" class="img-fluid">
                         <span class="shape shape-1"></span>
                         <span class="shape shape-2"></span>
                         <span class="shape shape-3"></span>
                         <span class="shape shape-4"></span>
                     </div>
-                    <p class="mb-3 fw-medium fs-4 text-primary">Hello, welcome to NEMSA...</p>
-                    <h1 class="mb-4">Streamlining Your Electrical Services Interactions</h1>
-                    <p class="mb-5">Discover a more efficient way to manage your electrical inspections, certifications, and compliance. Our portal simplifies the process, ensuring accuracy and timely updates for all your needs.</p>
-                    <a href="#services-section" class="btn btn-primary btn-lg">Explore Services</a>
                 </div>
             </div>
         </div>
@@ -463,42 +397,62 @@
             <span class="circle circle-7"></span>
         </div>
     </section>
-    <section class="brand-logo section pt-0">
+
+    <!-- Stats Section -->
+    <section class="stats-section">
         <div class="container">
-            <div class="brand-logo-slider" data-aos="fade-up" data-aos-duration="1500">
-                <img class="brand-logo-img img-fluid" src="https://placehold.co/100x50/cccccc/333333?text=Logo1" alt="Logo">
-                <img class="brand-logo-img img-fluid" src="https://placehold.co/100x50/cccccc/333333?text=Logo2" alt="Logo">
-                <img class="brand-logo-img img-fluid" src="https://placehold.co/100x50/cccccc/333333?text=Logo3" alt="Logo">
-                <img class="brand-logo-img img-fluid" src="https://placehold.co/100x50/cccccc/333333?text=Logo4" alt="Logo">
-                <img class="brand-logo-img img-fluid" src="https://placehold.co/100x50/cccccc/333333?text=Logo5" alt="Logo">
-                <img class="brand-logo-img img-fluid" src="https://placehold.co/100x50/cccccc/333333?text=Logo6" alt="Logo">
-                <img class="brand-logo-img img-fluid" src="https://placehold.co/100x50/cccccc/333333?text=Logo7" alt="Logo">
-                <img class="brand-logo-img img-fluid" src="https://placehold.co/100x50/cccccc/333333?text=Logo8" alt="Logo">
-                <img class="brand-logo-img img-fluid" src="https://placehold.co/100x50/cccccc/333333?text=Logo9" alt="Logo">
-                <img class="brand-logo-img img-fluid" src="https://placehold.co/100x50/cccccc/333333?text=Logo10" alt="Logo">
-                <img class="brand-logo-img img-fluid" src="https://placehold.co/100x50/cccccc/333333?text=Logo11" alt="Logo">
-                <img class="brand-logo-img img-fluid" src="https://placehold.co/100x50/cccccc/333333?text=Logo12" alt="Logo">
-            </div>
-        </div>
-    </section>
-    <section class="has-bg-color">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-md-6">
-                    <div class="me-4" data-aos="fade-right" data-aos-duration="1500">
-                        <h2>A Streamlined Platform for All Your Electrical Management Needs</h2>
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Certifications Processed</div>
                     </div>
                 </div>
-                <div class="col-md-6" data-aos="fade-left" data-aos-duration="1500">
-                    <p class="mb-0">At NEMSA Forms Portal, we've created a global network of talent dedicated to transforming how electrical services and compliance are managed. Our platform provides intuitive tools for documentation, tracking, and communication, ensuring efficiency and adherence to the highest safety standards.</p>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">10 Years</div>
+                        <div class="stat-label">Regulatory Excellence</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support Available</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- About Section -->
+    <section class="section has-bg-color">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="me-4">
+                        <h2>A Streamlined Platform for All Your Electrical Management Needs</h2>
+                        <p class="mt-4">At NEMSA Forms Portal, we've created a global network of talent dedicated to transforming how electrical services and compliance are managed. Our platform provides intuitive tools for documentation, tracking, and communication, ensuring efficiency and adherence to the highest safety standards.</p>
+                        <a href="#" class="btn btn-primary mt-3">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Electrical Compliance" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
     <section class="services section" id="services-section">
         <div class="container">
             <div class="row mb-5 text-center">
-                <div class="col-lg-6 col-12 mx-auto ">
+                <div class="col-lg-8 mx-auto">
                     <div class="section-title mb-md-4">
                         <h2>Providing <strong>Services
                             <svg width="198" height="21" viewBox="0 0 198 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -506,13 +460,14 @@
                             </svg>
                         </strong></h2>
                     </div>
+                    <p class="lead">Comprehensive solutions for all your electrical compliance needs</p>
                 </div>
             </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6 card-item">
-                    <div class="card text-center  border-0 bg-white radius shadow px-3 py-5" data-aos="fade-right" data-aos-duration="1500">
+            <div class="row">
+                <div class="col-md-4 card-item">
+                    <div class="card text-center border-0 bg-white radius shadow px-3 py-5 h-100">
                         <div class="card-icon mb-3">
-                            <i class="fas fa-cloud-upload-alt"></i> {# Updated icon for NEMSA context #}
+                            <i class="fas fa-file-upload"></i>
                         </div>
                         <div class="card-body">
                             <h4 class="card-title">Document Management</h4>
@@ -521,10 +476,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 card-item">
-                    <div class="card text-center  border-0 bg-white radius shadow px-3 py-5">
-                        <div class="card-icon  mb-3">
-                            <i class="fas fa-shield-alt"></i> {# Updated icon for NEMSA context #}
+                <div class="col-md-4 card-item">
+                    <div class="card text-center border-0 bg-white radius shadow px-3 py-5 h-100">
+                        <div class="card-icon mb-3">
+                            <i class="fas fa-shield-alt"></i>
                         </div>
                         <div class="card-body">
                             <h4 class="card-title">Compliance Assurance</h4>
@@ -533,10 +488,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 card-item">
-                    <div class="card text-center  border-0 bg-white radius shadow px-3 py-5" data-aos="fade-left" data-aos-duration="1500">
+                <div class="col-md-4 card-item">
+                    <div class="card text-center border-0 bg-white radius shadow px-3 py-5 h-100">
                         <div class="card-icon mb-3">
-                            <i class="fas fa-bell"></i> {# Updated icon for NEMSA context #}
+                            <i class="fas fa-bell"></i>
                         </div>
                         <div class="card-body">
                             <h4 class="card-title">Real-time Notifications</h4>
@@ -548,64 +503,13 @@
             </div>
         </div>
     </section>
-    <section class="experience section">
+
+    <!-- Testimonials -->
+    <section class="section bg-light">
         <div class="container">
-            <div class="row justify-content-between " data-aos="fade-up" data-aos-duration="1000">
-                <div class="col-lg-5">
-                    <div class="section-title mb-5">
-                        <h2>Our Impact and <strong>
-                            Experience.....
-                            <svg width="243" height="19" viewBox="0 0 243 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2.21709 14.5397C22.6251 11.094 43.5278 9.994 63.9195 6.62078C83.198 3.43169 103.311 4.48586 122.822 4.14529C147.108 3.72138 171.148 2.75291 195.34 5.24786C205.654 6.31158 217.3 7.49114 227.395 9.95137C230.185 10.6315 240.184 10.4221 241.39 12.7333" stroke="#FF5733" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </strong> </h2>
-                    </div>
-                    <p>NEMSA Forms Portal is built on years of expertise in electrical regulation and compliance. We simplify complex processes, providing a user-friendly platform that benefits both industry professionals and the public.</p>
-                    <div class="d-sm-flex justify-content-center mb-5 mb-lg-0 border-top pt-4 mt-4">
-                        <div class="bg-primary me-sm-4 p-3 mb-4 mb-md-0">
-                            <span class="text-primary h2">1000+</span> {# Changed number #}
-                            <p class="small">Successful Certifications Processed</p> {# Changed text #}
-                        </div>
-                        <div class="bg-primary me-sm-4 p-3 mb-4 mb-md-0">
-                            <span class="text-primary h2">10 Years</span> {# Changed number #}
-                            <p class="small">In Electrical Regulation Excellence</p> {# Changed text #}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="mb-5">
-                        <p class="text-secondery fw-normal mb-3 h4">Regulatory Framework Development</p>
-                        <h3 class="mb-3 pb-3 border-bottom">NEMSA Standards Board</h3>
-                        <div class="d-md-flex justify-content-between">
-                            <p class="fw-normal">Jan 2010 - Present</p>
-                            <p class=" fw-normal">Abuja, Nigeria</p>
-                        </div>
-                    </div>
-                    <div class="mb-5">
-                        <p class="text-secondery fw-normal mb-3 h4">Digital Transformation Lead</p>
-                        <h3 class="mb-3 pb-3 border-bottom">E-Government Initiatives</h3>
-                        <div class="d-md-flex justify-content-between">
-                            <p class="fw-normal">Mar 2015 - Dec 2020</p>
-                            <p class=" fw-normal">Federal Capital Territory, Nigeria</p>
-                        </div>
-                    </div>
-                    <div class="mb-5">
-                        <p class="text-secondery fw-normal h4 mb-3">Public Safety Programs</p>
-                        <h3 class="mb-3 pb-3 border-bottom">Community Outreach Division</h3>
-                        <div class="d-sm-flex justify-content-between">
-                            <p class="fw-normal">Sep 2018 - Present</p>
-                            <p class=" fw-normal">Nationwide, Nigeria</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="testimonial section pt-0">
-        <div class="container">
-            <div class="row mb-3  text-center">
-                <div class="col-lg-6 col-12 mx-auto ">
-                    <div class="section-title mb-md-5">
+            <div class="row mb-5 text-center">
+                <div class="col-lg-8 mx-auto">
+                    <div class="section-title mb-md-4">
                         <h2>What Our <strong>Users Say
                             <svg width="288" height="20" viewBox="0 0 288 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1.5542 13.3865C8.73165 13.3396 16.0446 12.002 22.9875 10.3399C27.8345 9.17953 32.4949 9.48038 37.3191 8.46843C57.1014 4.31885 77.8606 4.85593 97.98 5.19219C133.674 5.78877 169.523 5.16219 205.291 5.76C232.293 6.2113 259.037 9.10976 285.99 9.56025" stroke="#FF5733" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
@@ -614,207 +518,159 @@
                     </div>
                 </div>
             </div>
-            <div class="row align-items-center justify-content-center bg-primary" data-aos="fade-up" data-aos-duration="2000">
-                <div class="col-md-7 order-1 order-md-0">
-                    <div class="testimonial-left-slider">
-                        <div class="testimonial-left-slider-item">
-                            <svg class="quotation" width="60" height="61" viewBox="0 0 60 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24.1044 14.1903C25.6048 13.561 26.2341 11.7702 25.5564 10.3181L23.1847 5.33265C22.5071 3.92946 20.8614 3.29975 19.4093 3.92946C15.2951 5.67195 11.7618 7.94686 8.95443 10.7058C5.51786 13.9483 3.19455 17.6752 1.93609 21.7894C0.677632 25.9525 0 31.6151 0 38.827V53.6866C0 55.2838 1.30686 56.5907 2.90414 56.5907H21.9262C23.5235 56.5907 24.8304 55.2838 24.8304 53.6866V34.6644C24.8304 33.0667 23.5235 31.7603 21.9262 31.7603H12.8266C12.9234 26.8712 14.0851 22.9511 16.2148 19.9981C17.9573 17.6273 20.571 15.6912 24.1044 14.1903Z" fill="#DBDBDB" />
-                                <path d="M58.2764 14.1903C59.7769 13.5611 60.4056 11.7702 59.7285 10.3181L57.3568 5.38159C56.6791 3.97792 55.0335 3.34869 53.5814 3.97792C49.5156 5.72041 46.0301 7.99532 43.1749 10.7058C39.7378 13.9972 37.3666 17.7242 36.1077 21.8384C34.8492 25.9037 34.2205 31.5672 34.2205 38.8276V53.6871C34.2205 55.2844 35.5273 56.5913 37.1246 56.5913H56.1467C57.744 56.5913 59.0509 55.2844 59.0509 53.6871V34.665C59.0509 33.0672 57.744 31.7609 56.1467 31.7609H46.9987C47.0955 26.8717 48.2576 22.9516 50.3868 19.9986C52.1293 17.6274 54.743 15.6913 58.2764 14.1903Z" fill="#DBDBDB" />
-                            </svg>
-                            <div class="ms-lg-5 ms-md-4  mb-3">
-                                <div class="ms-md-4">
-                                    <p>“The NEMSA Forms Portal has drastically simplified our certification process. Real-time updates and easy document uploads mean less hassle and faster approvals. Highly recommended for all electrical contractors.”</p>
-                                </div>
-                                <div class="d-flex ms-md-4   align-items-center justify-content-md-start justify-content-center">
-                                    <img class="img" src="https://placehold.co/80x80/003366/ffffff?text=User1" alt="User Image"> {# Placeholder image #}
-                                    <div class="text ms-3">
-                                        <h5 class="mt-4 mb-1">Engr. Adamu Bello</h5>
-                                        <p>Electrical Contractor, Lagos</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-left-slider-item">
-                            <svg class="quotation" width="60" height="61" viewBox="0 0 60 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24.1044 14.1903C25.6048 13.561 26.2341 11.7702 25.5564 10.3181L23.1847 5.33265C22.5071 3.92946 20.8614 3.29975 19.4093 3.92946C15.2951 5.67195 11.7618 7.94686 8.95443 10.7058C5.51786 13.9483 3.19455 17.6752 1.93609 21.7894C0.677632 25.9525 0 31.6151 0 38.827V53.6866C0 55.2838 1.30686 56.5907 2.90414 56.5907H21.9262C23.5235 56.5907 24.8304 55.2838 24.8304 53.6866V34.6644C24.8304 33.0667 23.5235 31.7603 21.9262 31.7603H12.8266C12.9234 26.8712 14.0851 22.9511 16.2148 19.9981C17.9573 17.6273 20.571 15.6912 24.1044 14.1903Z" fill="#DBDBDB" />
-                                <path d="M58.2764 14.1903C59.7769 13.5611 60.4056 11.7702 59.7285 10.3181L57.3568 5.38159C56.6791 3.97792 55.0335 3.34869 53.5814 3.97792C49.5156 5.72041 46.0301 7.99532 43.1749 10.7058C39.7378 13.9972 37.3666 17.7242 36.1077 21.8384C34.8492 25.9037 34.2205 31.5672 34.2205 38.8276V53.6871C34.2205 55.2844 35.5273 56.5913 37.1246 56.5913H56.1467C57.744 56.5913 59.0509 55.2844 59.0509 53.6871V34.665C59.0509 33.0672 57.744 31.7609 56.1467 31.7609H46.9987C47.0955 26.8717 48.2576 22.9516 50.3868 19.9986C52.1293 17.6274 54.743 15.6913 58.2764 14.1903Z" fill="#DBDBDB" />
-                            </svg>
-                            <div class="ms-lg-5 ms-md-4 mb-3">
-                                <div class="ms-md-4">
-                                    <p>“As a public servant, I find the portal invaluable for ensuring compliance across our projects. The support team is responsive, and the interface is incredibly user-friendly, making our work much easier.”</p>
-                                </div>
-                                <div class="d-flex ms-md-4 mb-4 mb-md-0 align-items-center justify-content-md-start justify-content-center">
-                                    <img class="img" src="https://placehold.co/80x80/28a745/ffffff?text=User2" alt="User Image"> {# Placeholder image #}
-                                    <div class="text ms-3">
-                                        <h5 class="mt-4 mb-1">Hajia Aisha Musa</h5>
-                                        <p>Government Official, Abuja</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-left-slider-item">
-                            <svg class="quotation" width="60" height="61" viewBox="0 0 60 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24.1044 14.1903C25.6048 13.561 26.2341 11.7702 25.5564 10.3181L23.1847 5.33265C22.5071 3.92946 20.8614 3.29975 19.4093 3.92946C15.2951 5.67195 11.7618 7.94686 8.95443 10.7058C5.51786 13.9483 3.19455 17.6752 1.93609 21.7894C0.677632 25.9525 0 31.6151 0 38.827V53.6866C0 55.2838 1.30686 56.5907 2.90414 56.5907H21.9262C23.5235 56.5907 24.8304 55.2838 24.8304 53.6866V34.6644C24.8304 33.0667 23.5235 31.7603 21.9262 31.7603H12.8266C12.9234 26.8712 14.0851 22.9511 16.2148 19.9981C17.9573 17.6273 20.571 15.6912 24.1044 14.1903Z" fill="#DBDBDB" />
-                                <path d="M58.2764 14.1903C59.7769 13.5611 60.4056 11.7702 59.7285 10.3181L57.3568 5.38159C56.6791 3.97792 55.0335 3.34869 53.5814 3.97792C49.5156 5.72041 46.0301 7.99532 43.1749 10.7058C39.7378 13.9972 37.3666 17.7242 36.1077 21.8384C34.8492 25.9037 34.2205 31.5672 34.2205 38.8276V53.6871C34.2205 55.2844 35.5273 56.5913 37.1246 56.5913H56.1467C57.744 56.5913 59.0509 55.2844 59.0509 53.6871V34.665C59.0509 33.0672 57.744 31.7609 56.1467 31.7609H46.9987C47.0955 26.8717 48.2576 22.9516 50.3868 19.9986C52.1293 17.6274 54.743 15.6913 58.2764 14.1903Z" fill="#DBDBDB" />
-                            </svg>
-                            <div class="ms-lg-5 ms-md-4 mb-3">
-                                <div class="ms-md-4">
-                                    <p>“Getting my electrical installation certified used to be a long process. With NEMSA Forms Portal, everything is digital and fast. It's a game-changer for small businesses like mine.”</p>
-                                </div>
-                                <div class="d-flex ms-md-4 mb-4 mb-md-0 align-items-center justify-content-md-start justify-content-center">
-                                    <img class="img" src="https://placehold.co/80x80/B22222/ffffff?text=User3" alt="User Image"> {# Placeholder image #}
-                                    <div class="text ms-3">
-                                        <h5 class="mt-4 mb-1">Mr. Chidi Okoro</h5>
-                                        <p>Electrical Engineer, Enugu</p>
-                                    </div>
-                                </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <svg class="quotation" width="60" height="61" viewBox="0 0 60 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24.1044 14.1903C25.6048 13.561 26.2341 11.7702 25.5564 10.3181L23.1847 5.33265C22.5071 3.92946 20.8614 3.29975 19.4093 3.92946C15.2951 5.67195 11.7618 7.94686 8.95443 10.7058C5.51786 13.9483 3.19455 17.6752 1.93609 21.7894C0.677632 25.9525 0 31.6151 0 38.827V53.6866C0 55.2838 1.30686 56.5907 2.90414 56.5907H21.9262C23.5235 56.5907 24.8304 55.2838 24.8304 53.6866V34.6644C24.8304 33.0667 23.5235 31.7603 21.9262 31.7603H12.8266C12.9234 26.8712 14.0851 22.9511 16.2148 19.9981C17.9573 17.6273 20.571 15.6912 24.1044 14.1903Z" fill="#DBDBDB" />
+                            <path d="M58.2764 14.1903C59.7769 13.5611 60.4056 11.7702 59.7285 10.3181L57.3568 5.38159C56.6791 3.97792 55.0335 3.34869 53.5814 3.97792C49.5156 5.72041 46.0301 7.99532 43.1749 10.7058C39.7378 13.9972 37.3666 17.7242 36.1077 21.8384C34.8492 25.9037 34.2205 31.5672 34.2205 38.8276V53.6871C34.2205 55.2844 35.5273 56.5913 37.1246 56.5913H56.1467C57.744 56.5913 59.0509 55.2844 59.0509 53.6871V34.665C59.0509 33.0672 57.744 31.7609 56.1467 31.7609H46.9987C47.0955 26.8717 48.2576 22.9516 50.3868 19.9986C52.1293 17.6274 54.743 15.6913 58.2764 14.1903Z" fill="#DBDBDB" />
+                        </svg>
+                        <p class="mb-4">"The NEMSA Forms Portal has drastically simplified our certification process. Real-time updates and easy document uploads mean less hassle and faster approvals. Highly recommended for all electrical contractors."</p>
+                        <div class="d-flex align-items-center">
+                            <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                            <div class="ms-3">
+                                <h5 class="mb-1">Engr. Adamu Bello</h5>
+                                <p class="mb-0">Electrical Contractor, Lagos</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5 col-xl-4 order-0 order-md-1">
-                    <div class="testimonial-right-slider mb-md-0 mb-5">
-                        <img class="img img-fluid" src="https://placehold.co/300x400/003366/ffffff?text=Team+Member1" alt="Team Member"> {# Placeholder image #}
-                        <img class="img img-fluid" src="https://placehold.co/300x400/28a745/ffffff?text=Team+Member2" alt="Team Member"> {# Placeholder image #}
-                        <img class="img img-fluid" src="https://placehold.co/300x400/B22222/ffffff?text=Team+Member3" alt="Team Member"> {# Placeholder image #}
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <svg class="quotation" width="60" height="61" viewBox="0 0 60 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24.1044 14.1903C25.6048 13.561 26.2341 11.7702 25.5564 10.3181L23.1847 5.33265C22.5071 3.92946 20.8614 3.29975 19.4093 3.92946C15.2951 5.67195 11.7618 7.94686 8.95443 10.7058C5.51786 13.9483 3.19455 17.6752 1.93609 21.7894C0.677632 25.9525 0 31.6151 0 38.827V53.6866C0 55.2838 1.30686 56.5907 2.90414 56.5907H21.9262C23.5235 56.5907 24.8304 55.2838 24.8304 53.6866V34.6644C24.8304 33.0667 23.5235 31.7603 21.9262 31.7603H12.8266C12.9234 26.8712 14.0851 22.9511 16.2148 19.9981C17.9573 17.6273 20.571 15.6912 24.1044 14.1903Z" fill="#DBDBDB" />
+                            <path d="M58.2764 14.1903C59.7769 13.5611 60.4056 11.7702 59.7285 10.3181L57.3568 5.38159C56.6791 3.97792 55.0335 3.34869 53.5814 3.97792C49.5156 5.72041 46.0301 7.99532 43.1749 10.7058C39.7378 13.9972 37.3666 17.7242 36.1077 21.8384C34.8492 25.9037 34.2205 31.5672 34.2205 38.8276V53.6871C34.2205 55.2844 35.5273 56.5913 37.1246 56.5913H56.1467C57.744 56.5913 59.0509 55.2844 59.0509 53.6871V34.665C59.0509 33.0672 57.744 31.7609 56.1467 31.7609H46.9987C47.0955 26.8717 48.2576 22.9516 50.3868 19.9986C52.1293 17.6274 54.743 15.6913 58.2764 14.1903Z" fill="#DBDBDB" />
+                        </svg>
+                        <p class="mb-4">"As a public servant, I find the portal invaluable for ensuring compliance across our projects. The support team is responsive, and the interface is incredibly user-friendly, making our work much easier."</p>
+                        <div class="d-flex align-items-center">
+                            <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                            <div class="ms-3">
+                                <h5 class="mb-1">Hajia Aisha Musa</h5>
+                                <p class="mb-0">Government Official, Abuja</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <svg class="quotation" width="60" height="61" viewBox="0 0 60 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24.1044 14.1903C25.6048 13.561 26.2341 11.7702 25.5564 10.3181L23.1847 5.33265C22.5071 3.92946 20.8614 3.29975 19.4093 3.92946C15.2951 5.67195 11.7618 7.94686 8.95443 10.7058C5.51786 13.9483 3.19455 17.6752 1.93609 21.7894C0.677632 25.9525 0 31.6151 0 38.827V53.6866C0 55.2838 1.30686 56.5907 2.90414 56.5907H21.9262C23.5235 56.5907 24.8304 55.2838 24.8304 53.6866V34.6644C24.8304 33.0667 23.5235 31.7603 21.9262 31.7603H12.8266C12.9234 26.8712 14.0851 22.9511 16.2148 19.9981C17.9573 17.6273 20.571 15.6912 24.1044 14.1903Z" fill="#DBDBDB" />
+                            <path d="M58.2764 14.1903C59.7769 13.5611 60.4056 11.7702 59.7285 10.3181L57.3568 5.38159C56.6791 3.97792 55.0335 3.34869 53.5814 3.97792C49.5156 5.72041 46.0301 7.99532 43.1749 10.7058C39.7378 13.9972 37.3666 17.7242 36.1077 21.8384C34.8492 25.9037 34.2205 31.5672 34.2205 38.8276V53.6871C34.2205 55.2844 35.5273 56.5913 37.1246 56.5913H56.1467C57.744 56.5913 59.0509 55.2844 59.0509 53.6871V34.665C59.0509 33.0672 57.744 31.7609 56.1467 31.7609H46.9987C47.0955 26.8717 48.2576 22.9516 50.3868 19.9986C52.1293 17.6274 54.743 15.6913 58.2764 14.1903Z" fill="#DBDBDB" />
+                        </svg>
+                        <p class="mb-4">"Getting my electrical installation certified used to be a long process. With NEMSA Forms Portal, everything is digital and fast. It's a game-changer for small businesses like mine."</p>
+                        <div class="d-flex align-items-center">
+                            <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/men/67.jpg" alt="User">
+                            <div class="ms-3">
+                                <h5 class="mb-1">Mr. Chidi Okoro</h5>
+                                <p class="mb-0">Electrical Engineer, Enugu</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="projects section pt-0">
+
+    <!-- CTA Section -->
+    <section class="section bg-secondary text-white">
         <div class="container">
-            <div class="row mb-5 text-center">
-                <div class="col-lg-6 col-12 mx-auto ">
-                    <div class="section-title mb-md-4">
-                        <h2>NEMSA <strong>
-                            Impact
-                            <svg class="" width="198" height="21" viewBox="0 0 198 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 18.7327C13.8854 9.74093 29.4859 8.69377 43.6964 6.03115C65.1095 2.01897 86.6266 1.40829 108.405 2.01061C137.628 2.81881 166.558 7.3721 195.577 11.0296" stroke="#FF5733" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </strong> in Action
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row g-4 g-md-5 ">
-                <div class="col-md-6 image-item">
-                    <div class="card rounded-0 border-0" data-aos="fade-up" data-aos-duration="1500">
-                        <img class="img-fluid" src="https://placehold.co/600x400/001a35/ffffff?text=Project+Safety+Audit" alt="Project Safety Audit"> {# Placeholder image #}
-                        <div class="card-img-overlay">
-                            <div class="card-body">
-                                <a href="#" class="h4 text-white"> Nationwide Safety Audits Initiated</a>
-                                <ul class="meta-list list-unstyled d-flex">
-                                    <li class="list-inline-item text-white fw-normal">Compliance</li>
-                                    <li class="list-inline-item text-white fw-normal">Safety</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 image-item">
-                    <div class="card rounded-0 border-0" data-aos="fade-up" data-aos-duration="1500">
-                        <img class="img-fluid" src="https://placehold.co/600x400/003366/ffffff?text=Certification+Program" alt="Certification Program"> {# Placeholder image #}
-                        <div class="card-img-overlay">
-                            <div class="card-body">
-                                <a href="#" class="h4 text-white ">New Electrical Certification Program Launch</a>
-                                <ul class="meta-list list-unstyled d-flex">
-                                    <li class="list-inline-item text-white fw-normal">Education</li>
-                                    <li class="list-inline-item text-white fw-normal">Certification</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 image-item">
-                    <div class="card rounded-0 border-0" data-aos="fade-up" data-aos-duration="2000">
-                        <img class="img-fluid" src="https://placehold.co/600x400/28a745/ffffff?text=Community+Engagement" alt="Community Engagement"> {# Placeholder image #}
-                        <div class="card-img-overlay">
-                            <div class="card-body">
-                                <a href="#" class="h4 text-white ">Community Engagement for Electrical Safety</a>
-                                <ul class="meta-list list-unstyled d-flex">
-                                    <li class="list-inline-item text-white fw-normal">Outreach</li>
-                                    <li class="list-inline-item text-white fw-normal">Awareness</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 image-item">
-                    <div class="card rounded-0 border-0" data-aos="fade-up" data-aos-duration="2000">
-                        <img class="img-fluid" src="https://placehold.co/600x400/B22222/ffffff?text=Regulatory+Updates" alt="Regulatory Updates"> {# Placeholder image #}
-                        <div class="card-img-overlay">
-                            <div class="card-body">
-                                <a href="#" class="h4 text-white ">Latest Regulatory Updates Published</a>
-                                <ul class="meta-list list-unstyled d-flex">
-                                    <li class="list-inline-item text-white fw-normal">Regulation</li>
-                                    <li class="list-inline-item text-white fw-normal">News</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 mx-auto text-center">
-                    <a href="#" class="btn btn-outline-primary text-capitailize fw-medium py-2">view all</a>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">Ready to Streamline Your Electrical Compliance?</h2>
+                    <p class="lead mb-5">Join thousands of professionals who have simplified their electrical certification process with NEMSA Forms Portal.</p>
+                    <a href="#" class="btn btn-light btn-lg me-3">Get Started</a>
+                    <a href="#" class="btn btn-outline-light btn-lg">Schedule a Demo</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p class="text-muted mb-0">© 2025 NEMSA Forms Portal. All rights reserved.</p>
-            <p class="small mt-2">Designed for <a href="#" class="text-decoration-none">NEMSA</a></p>
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="text-white mb-4">NEMSA Forms Portal</h4>
+                    <p>Streamlining electrical services compliance through innovative digital solutions for professionals across Nigeria.</p>
+                    <div class="mt-4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-5 mb-md-0">
+                    <h5 class="text-white mb-4">Our Services</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#">Document Management</a></li>
+                        <li><a href="#">Compliance Assurance</a></li>
+                        <li><a href="#">Inspection Scheduling</a></li>
+                        <li><a href="#">Certification Tracking</a></li>
+                        <li><a href="#">Real-time Notifications</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <h5 class="text-white mb-4">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <i class="fas fa-map-marker-alt me-2 text-primary"></i>
+                            123 Compliance Road, Abuja
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-phone me-2 text-primary"></i>
+                            +234 123 456 7890
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-envelope me-2 text-primary"></i>
+                            info@nemsa-portal.gov.ng
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row copyright">
+                <div class="col-md-12">
+                    <p class="mb-0">© 2025 NEMSA Forms Portal. All rights reserved.</p>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <script>
         // Initialize AOS
         AOS.init({
-            once: true, // only animate once
-            duration: 1000 // default animation duration
+            once: true,
+            duration: 1000
         });
 
-        // Initialize Slick Carousels
-        $(document).ready(function(){
-            $('.brand-logo-slider').slick({
-                slidesToShow: 6,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                arrows: false,
-                dots: false,
-                responsive: [
-                    { breakpoint: 992, settings: { slidesToShow: 4 } },
-                    { breakpoint: 768, settings: { slidesToShow: 3 } },
-                    { breakpoint: 576, settings: { slidesToShow: 2 } }
-                ]
-            });
-
-            $('.testimonial-left-slider').slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 6000,
-                arrows: false,
-                dots: true,
-                asNavFor: '.testimonial-right-slider' // Link with right slider
-            });
-
-            $('.testimonial-right-slider').slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                asNavFor: '.testimonial-left-slider', // Link with left slider
-                dots: false,
-                arrows: true,
-                fade: true, // Smooth fade transition
-                centerMode: true,
-                focusOnSelect: true
+        // Initialize animations and interactions
+        $(document).ready(function() {
+            // Animation for stats counter
+            $('.stat-number').each(function() {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).text()
+                }, {
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function(now) {
+                        $(this).text(Math.ceil(now));
+                    }
+                });
             });
         });
     </script>
