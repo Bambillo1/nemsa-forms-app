@@ -4,15 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEMSA Forms Portal - Home</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Slick Carousel -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
@@ -98,6 +93,13 @@
             color: var(--light-text-color);
             font-weight: 700;
             font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            margin-right: 15px;
         }
 
         .navbar-brand:hover {
@@ -282,6 +284,125 @@
             border: 3px solid var(--accent-green);
         }
         
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--section-bg-light);
+            padding: 80px 0;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px;
+        }
+        
+        .contact-form .form-control {
+            border: 1px solid #e0e7ff;
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+        
+        .contact-form .form-control:focus {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.15);
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            background: var(--accent-green);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h5 {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        /* Fixed Image Carousel */
+        .parallax-container {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+        
+        .parallax-slider {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .parallax-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .parallax-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        
+        .parallax-caption {
+            position: absolute;
+            bottom: 50px;
+            left: 50px;
+            color: white;
+            max-width: 600px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        
+        .parallax-caption h3 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Carousel Navigation */
+        .carousel-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .carousel-dot.active {
+            background: white;
+        }
+        
         /* Footer */
         footer {
             background-color: var(--primary-navy);
@@ -323,6 +444,15 @@
             .section {
                 padding: 60px 0;
             }
+            
+            .parallax-caption {
+                left: 30px;
+                bottom: 30px;
+            }
+            
+            .parallax-caption h3 {
+                font-size: 2rem;
+            }
         }
         
         @media (max-width: 767.98px) {
@@ -333,15 +463,39 @@
             .stat-item {
                 margin-bottom: 30px;
             }
+            
+            .parallax-container {
+                height: 400px;
+            }
+            
+            .parallax-caption {
+                left: 20px;
+                bottom: 20px;
+                max-width: 80%;
+            }
+            
+            .parallax-caption h3 {
+                font-size: 1.8rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+            
+            .navbar-brand img {
+                height: 40px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">NEMSA Forms Portal</a>
+                <a class="navbar-brand" href="#">
+                    <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="NEMSA Logo">
+                    NEMSA Forms Portal
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -351,13 +505,13 @@
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="login.html">Login</a>
+                            <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
+                            <a class="nav-link" href="#services-section">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="#contact-section">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -365,7 +519,6 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero-area section">
         <div class="container">
             <div class="row align-items-center">
@@ -373,7 +526,7 @@
                     <p class="mb-3 fw-medium fs-4 text-primary">Hello, welcome to NEMSA...</p>
                     <h1 class="mb-4">Streamlining Your Electrical Services Interactions</h1>
                     <p class="mb-5">Discover a more efficient way to manage your electrical inspections, certifications, and compliance. Our portal simplifies the process, ensuring accuracy and timely updates for all your needs.</p>
-                    <a href="#" class="btn btn-primary btn-lg me-3">Get Started</a>
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg me-3">Get Started</a>
                     <a href="#services-section" class="btn btn-outline-light btn-lg">Learn More</a>
                 </div>
                 <div class="col-lg-6 order-lg-2 order-1 text-center mb-5 mb-lg-0">
@@ -398,31 +551,62 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
+    <div class="parallax-container">
+        <div class="parallax-slider">
+            <div class="parallax-slide active" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');">
+                <div class="parallax-caption">
+                    <h3>Electrical Safety Standards</h3>
+                    <p>Ensuring compliance with national electrical safety regulations.</p>
+                </div>
+            </div>
+            <div class="parallax-slide" style="background-image: url('https://images.unsplash.com/photo-1581092921461-eab62e97a780');">
+                <div class="parallax-caption">
+                    <h3>Certification Excellence</h3>
+                    <p>Streamlined certification process for electrical installations.</p>
+                </div>
+            </div>
+            <div class="parallax-slide" style="background-image: url('https://images.unsplash.com/photo-1581092335397-9fa06a0ef0e4');">
+                <div class="parallax-caption">
+                    <h3>Infrastructure Compliance</h3>
+                    <p>Maintaining the highest standards in electrical infrastructure.</p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <div class="carousel-dot active" data-index="0"></div>
+            <div class="carousel-dot" data-index="1"></div>
+            <div class="carousel-dot" data-index="2"></div>
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <p>NEMSA is committed to ensuring all electrical installations across Nigeria meet the highest safety standards. Our certification process guarantees compliance with national regulations and protects both property and lives.</p>
+    </div>
+
     <section class="stats-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-6">
                     <div class="stat-item">
-                        <div class="stat-number">1000+</div>
+                        <div class="stat-number" data-target="1250">0</div>
                         <div class="stat-label">Certifications Processed</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="stat-item">
-                        <div class="stat-number">10 Years</div>
+                        <div class="stat-number" data-target="10">0</div>
                         <div class="stat-label">Regulatory Excellence</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="stat-item">
-                        <div class="stat-number">98%</div>
+                        <div class="stat-number" data-target="98">0</div>
                         <div class="stat-label">Client Satisfaction</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="stat-item">
-                        <div class="stat-number">24/7</div>
+                        <div class="stat-number" data-target="24">0</div>
                         <div class="stat-label">Support Available</div>
                     </div>
                 </div>
@@ -430,7 +614,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="section has-bg-color">
         <div class="container">
             <div class="row justify-content-center align-items-center">
@@ -438,7 +621,7 @@
                     <div class="me-4">
                         <h2>A Streamlined Platform for All Your Electrical Management Needs</h2>
                         <p class="mt-4">At NEMSA Forms Portal, we've created a global network of talent dedicated to transforming how electrical services and compliance are managed. Our platform provides intuitive tools for documentation, tracking, and communication, ensuring efficiency and adherence to the highest safety standards.</p>
-                        <a href="#" class="btn btn-primary mt-3">Learn More</a>
+                        <a href="#services-section" class="btn btn-primary mt-3">Learn More</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -448,7 +631,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="services section" id="services-section">
         <div class="container">
             <div class="row mb-5 text-center">
@@ -504,7 +686,6 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
     <section class="section bg-light">
         <div class="container">
             <div class="row mb-5 text-center">
@@ -571,21 +752,99 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <section id="contact-section" class="contact-section">
+        <div class="container">
+            <div class="row mb-5 text-center">
+                <div class="col-lg-8 mx-auto">
+                    <div class="section-title mb-md-4">
+                        <h2>Get In <strong>Touch
+                            <svg width="288" height="20" viewBox="0 0 288 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.5542 13.3865C8.73165 13.3396 16.0446 12.002 22.9875 10.3399C27.8345 9.17953 32.4949 9.48038 37.3191 8.46843C57.1014 4.31885 77.8606 4.85593 97.98 5.19219C133.674 5.78877 169.523 5.16219 205.291 5.76C232.293 6.2113 259.037 9.10976 285.99 9.56025" stroke="#FF5733" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </strong></h2>
+                    </div>
+                    <p class="lead">Have questions? Reach out to our support team</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-card">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <form class="contact-form">
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" placeholder="Your Name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control" placeholder="Email Address" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" placeholder="Subject">
+                                    </div>
+                                    <div class="mb-3">
+                                        <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                                </form>
+                            </div>
+                            <div class="col-md-6 mt-4 mt-md-0">
+                                <div class="contact-info-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h5>Our Location</h5>
+                                        <p>123 Compliance Road, Central Business District, Abuja</p>
+                                    </div>
+                                </div>
+                                <div class="contact-info-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h5>Call Us</h5>
+                                        <p>+234 123 456 7890<br>+234 987 654 3210</p>
+                                    </div>
+                                </div>
+                                <div class="contact-info-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h5>Email Us</h5>
+                                        <p>support@nemsa.gov.ng<br>info@nemsa.gov.ng</p>
+                                    </div>
+                                </div>
+                                <div class="contact-info-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h5>Working Hours</h5>
+                                        <p>Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="section bg-secondary text-white">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h2 class="mb-4">Ready to Streamline Your Electrical Compliance?</h2>
                     <p class="lead mb-5">Join thousands of professionals who have simplified their electrical certification process with NEMSA Forms Portal.</p>
-                    <a href="#" class="btn btn-light btn-lg me-3">Get Started</a>
-                    <a href="#" class="btn btn-outline-light btn-lg">Schedule a Demo</a>
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg me-3">Get Started</a>
+                    <a href="#contact-section" class="btn btn-outline-light btn-lg">Schedule a Demo</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row">
@@ -604,8 +863,8 @@
                     <ul class="list-unstyled footer-links">
                         <li><a href="#">Home</a></li>
                         <li><a href="#">About Us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="#services-section">Services</a></li>
+                        <li><a href="#contact-section">Contact</a></li>
                         <li><a href="#">FAQs</a></li>
                     </ul>
                 </div>
@@ -645,7 +904,6 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -658,20 +916,106 @@
             duration: 1000
         });
 
-        // Initialize animations and interactions
-        $(document).ready(function() {
-            // Animation for stats counter
-            $('.stat-number').each(function() {
-                $(this).prop('Counter', 0).animate({
-                    Counter: $(this).text()
-                }, {
-                    duration: 2000,
-                    easing: 'swing',
-                    step: function(now) {
-                        $(this).text(Math.ceil(now));
+        // Fixed Statistics Counter
+        function animateCounter() {
+            $('.stat-number[data-target]').each(function() {
+                const $this = $(this);
+                const target = parseInt($this.data('target'));
+                const duration = 2000;
+                const startTime = Date.now();
+                
+                const updateCounter = () => {
+                    const elapsed = Date.now() - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const currentValue = Math.floor(progress * target);
+                    
+                    if ($this.next('.stat-label').text().includes('Regulatory Excellence')) {
+                        $this.text(currentValue + " Years");
+                    } else if ($this.next('.stat-label').text().includes('Support Available')) {
+                        $this.text("24/7");
+                    } else if ($this.next('.stat-label').text().includes('Client Satisfaction')) {
+                        $this.text(currentValue + "%");
+                    } else {
+                        $this.text(currentValue);
+                    }
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    }
+                };
+                
+                requestAnimationFrame(updateCounter);
+            });
+        }
+
+        // Trigger counter when stats-section is in view
+        function initCounterObserver() {
+            const statsSection = document.querySelector('.stats-section');
+            let hasAnimated = false;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        animateCounter();
+                        hasAnimated = true;
+                        observer.disconnect();
                     }
                 });
+            }, { threshold: 0.5 });
+
+            observer.observe(statsSection);
+        }
+
+        // Fixed Carousel Functionality
+        function initCarousel() {
+            const slides = document.querySelectorAll('.parallax-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            let currentSlide = 0;
+            
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                slides[n].classList.add('active');
+                dots[n].classList.add('active');
+                
+                currentSlide = n;
+            }
+            
+            function nextSlide() {
+                let next = currentSlide + 1;
+                if (next >= slides.length) next = 0;
+                showSlide(next);
+            }
+            
+            showSlide(0);
+            setInterval(nextSlide, 5000);
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
             });
+        }
+
+        // Smooth scrolling for anchor links
+        function initSmoothScrolling() {
+            $('a[href^="#"]').on('click', function(e) {
+                e.preventDefault();
+                const target = this.hash;
+                const $target = $(target);
+                
+                $('html, body').animate({
+                    'scrollTop': $target.offset().top - 80
+                }, 800, 'swing');
+            });
+        }
+
+        // Initialize everything when document is ready
+        $(document).ready(function() {
+            initCarousel();
+            initSmoothScrolling();
+            initCounterObserver();
         });
     </script>
 </body>

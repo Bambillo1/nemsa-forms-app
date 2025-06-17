@@ -1,22 +1,13 @@
 
-/* Auth Container - Displaying Original Background Image */
+/* Auth Container - Plain White Background */
 .auth-container {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    background: white; /* Plain white background */
     position: relative;
     overflow: hidden;
-
-    /* --- Displaying the ORIGINAL Background Image --- */
-    /* Only the image URL, position, size, and optional animation */
-    background: url('../images/nemsa_bg.jpg') no-repeat center center fixed;
-    background-size: cover; /* Ensure background covers the area */
-    /* REMOVED: linear-gradient(...) */
-    /* REMOVED: background-blend-mode: soft-light; */
-    /* Optional: Keep the animation if desired */
-    animation: subtleShift 30s ease infinite;
-
-    z-index: 0; /* Ensure other content is above this */
+    z-index: 0;
 }
 
 /* REMOVED: The .auth-container::before rule is removed entirely to remove the overlay */
@@ -34,22 +25,19 @@
 */
 
 /* Auth Card Enhancements - Making the card more transparent */
+/* Auth Card - Solid White */
 .auth-card {
     position: relative;
-    z-index: 2; /* Ensure card is above the background */
+    z-index: 2;
     width: 95%;
-    max-width: 440px;
+    max-width: 600px; /* Increased width to accommodate logo */
     margin: 2rem auto;
-    padding: 2.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0; /* Remove padding - will handle inner spacing */
+    border: 1px solid #e0e0e0; /* Light border */
     border-radius: 16px;
-    /* --- Adjusted opacity for the card background --- */
-    /* Make the white background more transparent to see the original image */
-    background: rgba(255, 255, 255, 0.6); /* Adjusted opacity - try 0.5, 0.6, 0.7 */
-    backdrop-filter: blur(8px); /* Keep the blur effect for readability */
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white; /* Solid white */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex; /* Added for logo layout */
 }
 
 .auth-card:hover {
@@ -171,3 +159,33 @@
     100% { background-position: 0% 50%; }
 }
 
+/* Logo and Form Sections */
+.auth-logo-side {
+    flex: 0 0 35%;
+    background: #f8f9fa;
+    border-right: 1px solid #e0e0e0;
+    border-radius: 16px 0 0 16px;
+}
+
+.auth-form-side {
+    flex: 0 0 65%;
+}
+
+/* Mobile view - stack vertically */
+@media (max-width: 767.98px) {
+    .auth-card {
+        flex-direction: column;
+    }
+    
+    .auth-logo-side {
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        border-radius: 16px 16px 0 0;
+        padding: 1.5rem !important;
+    }
+}
+
+/* Form adjustments */
+.auth-header {
+    padding-top: 0.5rem;
+}

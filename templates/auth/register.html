@@ -1,79 +1,63 @@
-
-
 {% extends "auth_base.html" %}
 
 {% block auth_title %}Register{% endblock %}
 
 {% block auth_content %}
-<div class="container my-5">
-  <div class="row">
-    <!-- ===== Services Info Column ===== -->
-    <div class="col-md-6 d-none d-md-block">
-      <div class="p-4">
-        <h3>Why Register?</h3>
-        <p>
-          By creating an account you will be able to:
-        </p>
-        <ul>
-          <li>Track the status of your submissions</li>
-          <li>Receive instant email updates</li>
-          <li>Access downloadable templates</li>
-          <li>Communicate directly with our team</li>
-        </ul>
-        <p class="small text-muted">
-          Already have questions? <a href="mailto:info@nemsa.org">Email us</a>
-        </p>
-      </div>
+<div class="auth-card shadow">
+    <!-- Logo Section - matches navbar but larger -->
+    <div class="auth-logo-side d-none d-md-flex align-items-center justify-content-center p-4">
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" 
+             alt="NEMSA Logo" 
+             class="img-fluid"
+             style="max-height: 120px;">
     </div>
-
-    <!-- ===== Registration Form Column ===== -->
-    <div class="col-md-6">
-      <div class="auth-card shadow">
+    
+    <!-- Form Section -->
+    <div class="auth-form-side p-4">
         <div class="auth-header text-center mb-4">
-          <h2 class="fw-bold"><i class="bi bi-person-plus"></i> Create Account</h2>
+            <h2 class="fw-bold"><i class="bi bi-person-plus"></i> Create Account</h2>
         </div>
+        
         <form method="POST" action="{{ url_for('auth.register') }}">
-          {{ form.hidden_tag() }}
-          <div class="mb-3">
-            <label class="form-label">Username</label>
-            <div class="input-group">
-              <span class="input-group-text"><i class="bi bi-person"></i></span>
-              <input type="text" class="form-control" name="username" required>
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input type="text" class="form-control" name="username" required>
+                </div>
             </div>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Email Address</label>
-            <div class="input-group">
-              <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-              <input type="email" class="form-control" name="email" required>
+            <div class="mb-3">
+                <label class="form-label">Email Address</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                    <input type="email" class="form-control" name="email" required>
+                </div>
             </div>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Password</label>
-            <div class="input-group">
-              <span class="input-group-text"><i class="bi bi-key"></i></span>
-              <input type="password" class="form-control" name="password" required>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-key"></i></span>
+                    <input type="password" class="form-control" name="password" required>
+                </div>
+                <div class="form-text">At least 8 characters with numbers and symbols</div>
             </div>
-            <div class="form-text">At least 8 characters with numbers and symbols</div>
-          </div>
-          <div class="mb-4">
-            <label class="form-label">Confirm Password</label>
-            <div class="input-group">
-              <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
-              <input type="password" class="form-control" name="confirm_password" required>
+            <div class="mb-4">
+                <label class="form-label">Confirm Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                    <input type="password" class="form-control" name="confirm_password" required>
+                </div>
             </div>
-          </div>
-          <button type="submit" class="btn btn-primary w-100 mb-3">
-            <i class="bi bi-person-check"></i> Register
-          </button>
-          <div class="text-center">
-            <a href="{{ url_for('auth.login') }}" class="text-muted">
-              Already have an account? Login here
-            </a>
-          </div>
+            <button type="submit" class="btn btn-primary w-100 mb-3">
+                <i class="bi bi-person-check"></i> Register
+            </button>
+            <div class="text-center">
+                <a href="{{ url_for('auth.login') }}" class="text-muted">
+                    Already have an account? Login here
+                </a>
+            </div>
         </form>
-      </div>
     </div>
-  </div>
 </div>
 {% endblock %}
